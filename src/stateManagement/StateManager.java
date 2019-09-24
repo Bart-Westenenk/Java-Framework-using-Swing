@@ -1,5 +1,6 @@
 package stateManagement;
 
+import java.awt.Graphics;
 import java.awt.Panel;
 import java.util.ArrayList;
 
@@ -20,9 +21,11 @@ public class StateManager {
 	private int currentState;
 	
 	JPanel mainPanel;
+	Graphics graphics;
 	
 	public StateManager(JPanel panel) {
 		mainPanel = panel;
+		panel.add(graphics);
 		
 		//Initialize the arraylist
 		appStates = new ArrayList<AppState>();
@@ -46,7 +49,7 @@ public class StateManager {
 	}
 	
 	public void draw() {
-		appStates.get(currentState).draw(mainPanel);	//Panel --> mainpanel? More bugproof?
+		appStates.get(currentState).draw(Graphics);	//Panel --> mainpanel? More bugproof?
 	}
 	
 	public void changeState(int state) {

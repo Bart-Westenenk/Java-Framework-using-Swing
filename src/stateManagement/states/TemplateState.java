@@ -1,8 +1,12 @@
 package stateManagement.states;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.MenuBar;
+import java.awt.Toolkit;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.plaf.synth.*;
 
 import main.ApplicationMain;
 import stateManagement.*;
@@ -25,11 +29,18 @@ public class TemplateState extends AppState {
 		
 		//This method accesses the highest
 		ApplicationMain.windowFrame.setTitle("Template view"); //Set the name of the window, displayed on the top of window, besides the icon of your app, the close and minimize button.
-		ApplicationMain.windowFrame.setSize(1900, 1200); //Set the size of the window.
-		ApplicationMain.windowFrame.setResizable(true); //Set resizeablity
 		
-		//Setup layout
-		//If required, add your own container panels to create a custom layout
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //Get the current screen Size
+		System.out.print(screenSize);
+		ApplicationMain.windowFrame.setSize((int) (screenSize.width * 0.8), (int) (screenSize.height * 0.8)); //Set the size of the window.
+		Dimension frameSize = ApplicationMain.windowFrame.getSize();
+		
+		ApplicationMain.windowFrame.setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
+		
+		ApplicationMain.windowFrame.setResizable(true); //Set resizeablity
+		//ApplicationMain.windowFrame.setMenuBar(); //Set a menubar, not used in this template.
+		
+		//From this point on it is on you to create a layout and add UI components
 	}
 
 
@@ -38,7 +49,7 @@ public class TemplateState extends AppState {
 	}
 
 
-	public void draw(JPanel panel) {
+	public void draw(Graphics graphics) {
 		
 	}
 
